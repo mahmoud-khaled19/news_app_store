@@ -4,6 +4,7 @@ import 'package:news_app_store/utils/strings_manager.dart';
 import 'package:news_app_store/utils/values_manager.dart';
 import 'package:news_app_store/view_model/app_cubit.dart';
 import 'package:news_app_store/view_model/app_state.dart';
+import 'package:news_app_store/widgets/news_Item.dart';
 import 'package:sizer/sizer.dart';
 import '../widgets/elevated_button_widget.dart';
 import '../widgets/suggestions_container_widget.dart';
@@ -14,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppCubit(),
+      create: (context) => AppCubit()..getAllNews(),
       child: BlocConsumer<AppCubit, AppState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -22,9 +23,15 @@ class HomeScreen extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: const Text(AppStrings.appTitle),
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.search),
+                )
+              ],
             ),
             drawer: const Drawer(),
-            body: Padding(
+            body: state is AllNewsSuccessState? Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
@@ -84,10 +91,25 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: AppSize.s8,
                   ),
-                  const SuggestionsContainerWidget()
+                  const SuggestionsContainerWidget(),
+                  Expanded(
+                    child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        var data = cubit.model!.articles![index];
+                        return NewsItem(
+                          title: data.title!,
+                          description: data.description!,
+                          date: data.publishedAt!,
+                          image: data.urlToImage?? '',
+                        );
+                      },
+                      itemCount:cubit.model!.articles?.length,
+                    ),
+                  ),
                 ],
               ),
-            ),
+            ): const Center(child: CircularProgressIndicator(),),
           );
         },
       ),
