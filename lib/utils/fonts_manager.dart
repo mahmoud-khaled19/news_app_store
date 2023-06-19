@@ -9,7 +9,4 @@ class FontWeightManager {
   static const FontWeight bold = FontWeight.w700;
 }
 
-TextStyle style = GoogleFonts.akshar(
-  fontSize: 16,
-  fontWeight: FontWeight.w600,
-);
+

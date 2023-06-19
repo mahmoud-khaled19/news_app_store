@@ -1,6 +1,8 @@
 
 class AppStrings {
   static const String noDataFound = 'no_data_found';
+  static const String lightMode = 'Light Mode';
+  static const String darkMode = 'Dark Mode';
   static const String appTitle = ' News App';
   static const String allNews = 'All News';
   static const String topTRends = 'Top Trends';

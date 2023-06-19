@@ -11,12 +11,9 @@ class SuggestionsContainerWidget extends StatefulWidget {
 
 class _SuggestionsContainerWidgetState
     extends State<SuggestionsContainerWidget> {
-  List<String> keyWords = [
+  final List<String> keyWords = [
     'All News',
-    'Sports',
-    'Trend',
-    'Music',
-    'Business',
+    'Trends',
   ];
   int currentSuggestIndex = 0;
 

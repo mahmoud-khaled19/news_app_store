@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:news_app_store/utils/values_manager.dart';
 import 'package:news_app_store/widgets/default_custom_text.dart';
 import 'package:sizer/sizer.dart';
-
 class NewsItem extends StatelessWidget {
   const NewsItem({
     Key? key,
@@ -65,8 +64,9 @@ class NewsItem extends StatelessWidget {
                   children: [
                     const Icon(Icons.link),
                     const Spacer(),
+
                     DefaultCustomText(
-                      text: date,
+                      text:date,
                       fontSize: AppSize.s12,
                       maxLines: 1,
                       alignment: Alignment.centerRight,
