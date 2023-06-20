@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     int newsIndex = 0;
     log(' build Home screen');
     return Scaffold(
         appBar: AppBar(
@@ -32,7 +33,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: AppSize.s8,
               ),
-              const SuggestionsContainerWidget(),
+               const SuggestionsContainerWidget(),
                NewsWidget(),
             ],
           ),

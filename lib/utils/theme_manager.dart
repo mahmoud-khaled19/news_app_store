@@ -15,10 +15,10 @@ ThemeData getLightApplicationTheme() {
       appBarTheme: AppBarTheme(
         centerTitle: true,
           titleTextStyle: GoogleFonts.akshar(
-              color: Colors.black, fontSize: AppSize.s18, letterSpacing: 0.6),
+              color: Colors.black, fontSize: AppSize.s16, letterSpacing: 0.6),
           backgroundColor: ColorsManager.lightScaffoldColor,
           elevation: 0,
-          iconTheme: IconThemeData(color: ColorsManager.black)),
+          iconTheme: IconThemeData(color: ColorsManager.black,size: AppSize.s18)),
       drawerTheme:
           DrawerThemeData(backgroundColor: ColorsManager.lightScaffoldColor),
       colorScheme:

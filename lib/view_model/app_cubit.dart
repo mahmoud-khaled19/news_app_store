@@ -1,7 +1,10 @@
+import 'dart:ui';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app_store/models/news_model.dart';
 import 'package:news_app_store/utils/api_constance.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
@@ -26,7 +29,6 @@ class AppCubit extends Cubit<AppState> {
       getAllNews();
     }
   }
-
     Future getAllNews() async {
       emit(AllNewsLoadingState());
       await Dio().get(ApiConstance.getAllNews, queryParameters: {
@@ -40,4 +42,6 @@ class AppCubit extends Cubit<AppState> {
         print(error.toString());
       });
     }
+  late final WebViewController controller;
+
 }

@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:news_app_store/utils/values_manager.dart';
 import 'package:news_app_store/widgets/default_custom_text.dart';
 import 'package:sizer/sizer.dart';
+
+import '../view/web_view_screen.dart';
+
 class NewsItem extends StatelessWidget {
   const NewsItem({
     Key? key,
@@ -10,10 +13,12 @@ class NewsItem extends StatelessWidget {
     required this.title,
     required this.description,
     required this.date,
+    required this.url,
   }) : super(key: key);
 
   final String image;
   final String title;
+  final String url;
   final String description;
   final String date;
 
@@ -62,11 +67,17 @@ class NewsItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    const Icon(Icons.link),
+                    GestureDetector(
+                      child: const Icon(Icons.link),
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return  WebViewScreen(url: url,);
+                        }));
+                      },
+                    ),
                     const Spacer(),
-
                     DefaultCustomText(
-                      text:date,
+                      text: date,
                       fontSize: AppSize.s12,
                       maxLines: 1,
                       alignment: Alignment.centerRight,
