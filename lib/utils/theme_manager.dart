@@ -51,10 +51,11 @@ ThemeData getDarkApplicationTheme() {
         ColorsManager.darkIconsColor,
       ))),
       appBarTheme: AppBarTheme(
+          centerTitle: true,
           backgroundColor: ColorsManager.darkScaffoldColor,
           elevation: 0,
-          titleTextStyle: GoogleFonts.lobster(
-              color: Colors.white, fontSize: AppSize.s18, letterSpacing: 0.6)),
+          titleTextStyle: GoogleFonts.akshar(
+              color: Colors.white, fontSize: AppSize.s16, letterSpacing: 0.6)),
       drawerTheme:
           DrawerThemeData(backgroundColor: ColorsManager.darkScaffoldColor),
       colorScheme:
@@ -69,10 +70,10 @@ ThemeData getDarkApplicationTheme() {
       cardColor: ColorsManager.darkCardColor,
       textTheme: TextTheme(
           titleLarge: getSemiBoldStyle(
-              fontSize: AppSize.s18, color: ColorsManager.lightScaffoldColor),
-          titleMedium: getMediumStyle(
               fontSize: AppSize.s16, color: ColorsManager.lightScaffoldColor),
+          titleMedium: getMediumStyle(
+              fontSize: AppSize.s14, color: ColorsManager.lightScaffoldColor),
           titleSmall: getRegularStyle(
-              fontSize: AppSize.s14, color: ColorsManager.lightScaffoldColor)),
+              fontSize: AppSize.s12, color: ColorsManager.lightScaffoldColor)),
       brightness: Brightness.dark);
 }
