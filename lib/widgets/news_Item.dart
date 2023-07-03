@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app_store/utils/values_manager.dart';
 import 'package:news_app_store/widgets/default_custom_text.dart';
 import 'package:sizer/sizer.dart';
+import '../utils/global_methods.dart';
 import '../view/web_view_screen.dart';
 
 class NewsItem extends StatelessWidget {
@@ -65,44 +66,37 @@ class NewsItem extends StatelessWidget {
             width: 1,
           ),
           Expanded(
-            child: Column(
-              children: [
-                DefaultCustomText(
-                  text: title,
-                  maxLines: 1,
-                  alignment: Alignment.centerLeft,
-                ),
-                SizedBox(
-                  height: 2.sp,
-                ),
-                DefaultCustomText(
-                  text: description,
-                  maxLines: 2,
-                  alignment: Alignment.centerLeft,
-                ),
-                Row(
-                  children: [
-                    GestureDetector(
-                      child: const Icon(Icons.link),
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return WebViewScreen(
-                            url: url,
-                          );
-                        }));
-                      },
-                    ),
-                    const Spacer(),
-                    DefaultCustomText(
-                      text: date,
-                      fontSize: AppSize.s12,
-                      maxLines: 1,
-                      alignment: Alignment.centerRight,
-                    )
-                  ],
-                )
-              ],
+            child: GestureDetector(
+              onTap: () {
+                GlobalMethods.navigateTo(context, WebViewScreen(url: url));
+              },
+              child: Column(
+                children: [
+                  DefaultCustomText(
+                    text: title,
+                    maxLines: 1,
+                    alignment: Alignment.centerLeft,
+                  ),
+                  SizedBox(
+                    height: 2.sp,
+                  ),
+                  DefaultCustomText(
+                    text: description,
+                    maxLines: 2,
+                    alignment: Alignment.centerLeft,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      DefaultCustomText(
+                        text: date,
+                        fontSize: AppSize.s12,
+                        maxLines: 1,
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ],

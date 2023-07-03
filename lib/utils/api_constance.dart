@@ -4,6 +4,6 @@
 class ApiConstance {
   static const basicApi = 'b2e740ca236643d798d10e6d1d54669d';
   static const basicUrl = 'https://newsapi.org/v2';
-  static const String getAllNews = '$basicUrl/everything?q=bitcoin&apiKey=$basicApi';
+  static const String getAllNews = '$basicUrl/everything?q=business&apiKey=$basicApi';
   static const String searchUrl = '$basicUrl/everything?q=bitcoin&apiKey=$basicApi';
 }

@@ -12,13 +12,11 @@ class PaginationList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppCubit, AppState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+    return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
         AppCubit cubit = BlocProvider.of(context);
         return SizedBox(
+
           height: AppSize.s30,
           child: Row(
             children: [

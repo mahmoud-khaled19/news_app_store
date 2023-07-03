@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:news_app_store/utils/values_manager.dart';
 import 'package:news_app_store/view/home_screen.dart';
 import 'package:news_app_store/widgets/default_custom_text.dart';
@@ -18,16 +19,17 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Image(
-              image: AssetImage('assets/images/newspaper.png'),
-            ),
+            Lottie.network(
+                'https://assets1.lottiefiles.com/packages/lf20_2LdLki.json'),
             SizedBox(
-              height: AppSize.s16,
+              height: AppSize.s20,
             ),
-            const DefaultCustomText(
-              text: 'Developed By : Mahmoud KHaled',
-              alignment: Alignment.center,
-            )
+             Row(
+               crossAxisAlignment: CrossAxisAlignment.center,
+                 mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                   DefaultCustomText(text: 'Developed By : Mahmoud Khaled')
+                ] )
           ],
         ),
       ),

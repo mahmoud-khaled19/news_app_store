@@ -1,8 +1,6 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app_store/models/news_model.dart';
@@ -23,7 +21,7 @@ class AppCubit extends Cubit<AppState> {
   int chosenIndex = 0;
   bool isDark = false;
   bool isBookMark = false;
-
+  int currentSuggestIndex = 0;
   void changeTheme() {
     isDark = !isDark;
     emit(ChangeAppThemeState());
@@ -51,9 +49,26 @@ class AppCubit extends Cubit<AppState> {
     }
   }
 
+  changeIndexINSuggestionList(int index){
+    currentSuggestIndex = index;
+    emit(ChangeIndexINSuggestionList());
+  }
   Future getAllNews() async {
     emit(AllNewsLoadingState());
     await Dio().get(ApiConstance.getAllNews, queryParameters: {
+      'pageSize': 15,
+      'page': chosenIndex + 1,
+    }).then((value) {
+      model = NewsModel.fromJson(value.data);
+      emit(AllNewsSuccessState());
+    }).catchError((error) {
+      emit(AllNewsErrorState());
+      print(error.toString());
+    });
+  }
+  Future getSuggestionNews(String suggestion) async {
+    emit(AllNewsLoadingState());
+    await Dio().get('${ApiConstance.basicUrl}/everything?q=$suggestion&apiKey=${ApiConstance.basicApi}', queryParameters: {
       'pageSize': 15,
       'page': chosenIndex + 1,
     }).then((value) {
@@ -98,7 +113,7 @@ class AppCubit extends Cubit<AppState> {
       'bookMarked':true,
     }).then((value) {
       GlobalMethods.showSnackBar(
-          context, 'The News Added To Book Marks', Colors.green);
+          context, 'Added to Bookmarks Successfully', Colors.green);
     }).catchError((error) {
       log("Failed to add user: $error");
     } );

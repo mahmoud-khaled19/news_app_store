@@ -41,6 +41,7 @@ class SearchScreen extends StatelessWidget {
               cubit.searchModel?.articles != null
                   ? Expanded(
                       child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
                         itemBuilder: (context, index) {
                           var data = cubit.searchModel!.articles![index];
                           return NewsItem(

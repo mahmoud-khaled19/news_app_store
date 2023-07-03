@@ -2,6 +2,7 @@ abstract class AppState {}
 
 class AppInitial extends AppState {}
 class ChangeAppThemeState extends AppState {}
+class ChangeIndexINSuggestionList extends AppState {}
 class ChangeBookMarkedNewsItemState extends AppState {}
 class ChangeBookMarkIcon extends AppState {}
 class NextNewsPage extends AppState {}
