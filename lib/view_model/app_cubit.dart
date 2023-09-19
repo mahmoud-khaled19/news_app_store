@@ -1,21 +1,13 @@
-import 'dart:developer';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app_store/models/news_model.dart';
 import 'package:news_app_store/utils/api_constance.dart';
-import 'package:news_app_store/utils/global_methods.dart';
-import 'package:uuid/uuid.dart';
 import 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(AppInitial());
   NewsModel? model;
   NewsModel? searchModel;
-  FirebaseFirestore fireStore = FirebaseFirestore.instance;
-  CollectionReference bookMarks =
-      FirebaseFirestore.instance.collection('bookMarks');
 
   static AppCubit get(context) => BlocProvider.of(context);
   int chosenIndex = 0;
@@ -93,29 +85,5 @@ class AppCubit extends Cubit<AppState> {
     });
   }
 
-  Future<void> addNewsToBookMarkScreen({
-    required String title,
-    required String description,
-    required String image,
-    required String url,
-    required String date,
-    required BuildContext context,
-  }) async {
-    var newsItemId = const Uuid().v4();
 
-    return await bookMarks.doc(newsItemId).set({
-      'title': title,
-      'date': date,
-      'description': description,
-      'image': image,
-      'url': url,
-      'id': newsItemId,
-      'bookMarked':true,
-    }).then((value) {
-      GlobalMethods.showSnackBar(
-          context, 'Added to Bookmarks Successfully', Colors.green);
-    }).catchError((error) {
-      log("Failed to add user: $error");
-    } );
-  }
 }

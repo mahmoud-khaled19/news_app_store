@@ -24,12 +24,7 @@ class SplashScreen extends StatelessWidget {
             SizedBox(
               height: AppSize.s20,
             ),
-             Row(
-               crossAxisAlignment: CrossAxisAlignment.center,
-                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                   DefaultCustomText(text: 'Developed By : Mahmoud Khaled')
-                ] )
+            const DefaultCustomText(text: 'Developed By : Mahmoud Khaled',alignment: Alignment.center,)
           ],
         ),
       ),

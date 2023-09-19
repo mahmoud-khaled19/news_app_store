@@ -20,12 +20,12 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text(AppStrings.appTitle),
           actions: [
-               GestureDetector(
-                onTap: (){
-                  GlobalMethods.navigateTo(context, SearchScreen());
-                },
-                child: const Icon(Icons.search),
-              ),
+            GestureDetector(
+              onTap: () {
+                GlobalMethods.navigateTo(context, SearchScreen());
+              },
+              child: const Icon(Icons.search),
+            ),
           ],
         ),
         drawer: const DrawerWidget(),
@@ -45,11 +45,11 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: AppSize.s4,
                     ),
-                     SuggestionsContainerWidget(),
+                    SuggestionsContainerWidget(),
                     SizedBox(
                       height: AppSize.s8,
                     ),
-                    NewsWidget(),
+                    const NewsWidget(),
                   ],
                 ),
               ),

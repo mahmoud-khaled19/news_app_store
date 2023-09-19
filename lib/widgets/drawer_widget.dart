@@ -5,8 +5,6 @@ import 'package:news_app_store/view_model/app_cubit.dart';
 import 'package:news_app_store/view_model/app_state.dart';
 import 'package:news_app_store/widgets/default_custom_text.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../utils/global_methods.dart';
-import '../view/bookmarks_screen.dart';
 import 'list_tile_widget.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -23,9 +21,9 @@ class DrawerWidget extends StatelessWidget {
               DrawerHeader(
                 child: Container(
                   color: Theme.of(context).splashColor,
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Center(
                           child: DefaultCustomText(
                         text: 'News Drawer',
@@ -50,16 +48,6 @@ class DrawerWidget extends StatelessWidget {
                   cubit.changeTheme();
                 },
                 icon: cubit.isDark ? Icons.brightness_4 : Icons.dark_mode,
-              ),
-              const Divider(
-                thickness: 3,
-              ),
-              ListTileWidget(
-                text: AppStrings.drawerBookMark,
-                function: () {
-                  GlobalMethods.navigateTo(context, const BookMarksScreen());
-                },
-                icon: Icons.bookmark,
               ),
               const Divider(
                 thickness: 3,

@@ -29,7 +29,9 @@ class SearchScreen extends StatelessWidget {
               },
               suffixIcon: Icons.close,
               controller: searchController,
-              validate: (String? value) {},
+              validate: (String? value) {
+                return null;
+              },
             ),
           ),
           body: Column(
